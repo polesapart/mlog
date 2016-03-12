@@ -7,5 +7,3 @@
 *.mlogmap
 __init__.py
 __pycache__/
-example
-test_mlog
