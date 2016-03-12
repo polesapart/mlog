@@ -1,0 +1,11 @@
+*.o
+*.exe
+*.bak
+*.sw?
+.gdb_history
+*.core
+*.mlogmap
+__init__.py
+__pycache__/
+example
+test_mlog
