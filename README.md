@@ -2,9 +2,9 @@
 
 ## Description
 
-MLOG is a super-efficient logger for constrained systems like small embedded systems -- systems that cannot afford aditional string-based logging.
+MLOG is a super-efficient logger for constrained systems like small embedded systems -- systems that cannot afford traditional string-based logging.
 
-The idea is simple: instead of space-consuming log strings, 1-byte constants are defined whose symbol name carries the text that is to be logged. For instance:
+The idea is simple: instead of space-consuming log strings, 1-byte constants are defined in the code whose symbol name carries the text that is to be logged. For instance:
 ```
 // Traditional logging:
 logger("Inside function foo");
@@ -12,7 +12,7 @@ logger("Inside function foo");
 // Micro logging:
 MLOG_INFO(Inside_function_foo);
 ```
-The `MLOG_INFO` macro first statically allocates a one-byte symbol that looks more or less like this:
+The `MLOG_INFO` macro once statically allocates a one-byte symbol that looks more or less like this:
 ```
 static const uint8_t MLOG_Comp_II_Inside_function_foo___;
 ```
