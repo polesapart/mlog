@@ -22,9 +22,9 @@ The benefit of the micro logging approach is clear: with traditional logging, 20
 
 ## Dependencies
 
-For running the provided example: `g++` and `python3`
+For running the provided example: just `g++` and `python3`
 
-If you want to extending/unit test MLOG itself, that is, if you want to run `make` in the top-level directory, you need [Google Test/Google Mock](https://github.com/google/googletest). Please adapt paths in Makefile accordingly.
+If you want to extend/unit test MLOG itself, that is, if you want to run `make` in the top-level directory, you need [Google Test/Google Mock](https://github.com/google/googletest). Please adapt paths in Makefile accordingly.
 
 ## Portability
 
