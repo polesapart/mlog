@@ -9,8 +9,8 @@ After running `make` you should have an executable called `example` and an mlogm
 ## Starting the logger
 Start another terminal:
 ```
-cd <mlog-dir>/mlog_logger
-./mlog_logger.py ../example/example.nmaplog
+cd <mlog-dir>/example/mlog_logger
+./mlog_logger.py ../example.nmaplog
 ```
 
 ## Running the example

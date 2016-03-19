@@ -1,5 +1,6 @@
 
 import unittest
+from mlog_logger import READABLE_LOG_LEVELS
 from mlog_logger import LogInfoMapBuilder, is_value_present, plain_address
 #LogInfoMapBuilder
 
@@ -21,16 +22,16 @@ class TestMlogLogger(unittest.TestCase):
 
     def test_parse_log_info_ok(self):
         log_info = LogInfoMapBuilder._parse_log_string("12f7e48   MLOG_FOO_ADAPTER_ADAPTER_II_cyclic_task_time_is___")
-        expected = LogInfoMapBuilder.LogInfo(component="FOO_ADAPTER_ADAPTER", text="cyclic_task_time_is", level="II", address=0x12f7e48)
+        expected = LogInfoMapBuilder.LogInfo(component="FOO_ADAPTER_ADAPTER", text="cyclic_task_time_is", level=READABLE_LOG_LEVELS["II"], address=0x12f7e48)
         self.assertEqual(expected, log_info)
 
         log_info = LogInfoMapBuilder._parse_log_string("1234 MLOG_FOO_EE_this_is_an_error___")
-        expected = LogInfoMapBuilder.LogInfo(component="FOO", text="this_is_an_error", level="EE", address=0x1234)
+        expected = LogInfoMapBuilder.LogInfo(component="FOO", text="this_is_an_error", level=READABLE_LOG_LEVELS["EE"], address=0x1234)
         self.assertEqual(expected, log_info)
 
         # Various whitespace at beginning.
         log_info = LogInfoMapBuilder._parse_log_string("012f7e48  MLOG_FOO_ADAPTER_ADAPTER_II_cyclic_task_time_is___")
-        expected = LogInfoMapBuilder.LogInfo(component="FOO_ADAPTER_ADAPTER", text="cyclic_task_time_is", level="II", address=0x12f7e48)
+        expected = LogInfoMapBuilder.LogInfo(component="FOO_ADAPTER_ADAPTER", text="cyclic_task_time_is", level=READABLE_LOG_LEVELS["II"], address=0x12f7e48)
         self.assertEqual(expected, log_info)
 
     def test_value_present(self):

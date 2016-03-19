@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 
+"""
+MLOG logger -- A simple MLOG log message receiver.
+
+Listens on localhost port 12350 for MLOG log messages and prints them in a
+human-readable way.
+"""
+
 import collections
 import os
 import os.path
@@ -12,6 +19,7 @@ SERVER_MULTICAST_ADDRESS = socket.gethostbyname('localhost')
 SERVER_PORT = 12350
 
 VALUE_PRESENT_MASK = ((1 << 6) << 24)
+READABLE_LOG_LEVELS = {"II": "INFO", "WW": "WARN", "EE": "ERROR"}
 
 #pylint:disable=too-few-public-methods
 class LogSource:
@@ -80,7 +88,8 @@ class LogInfoMapBuilder:
         m = LogInfoMapBuilder.PATTERN.fullmatch(line)
         if m:
             int_address = int(m.group(1), 16)
-            return LogInfoMapBuilder.LogInfo(component=m.group(2), level=m.group(3), text=m.group(4), address=int_address)
+            return LogInfoMapBuilder.LogInfo(
+                component=m.group(2), level=READABLE_LOG_LEVELS[m.group(3)], text=m.group(4), address=int_address)
         return None
 
 def abort(text):
@@ -126,11 +135,11 @@ def main():
                     int_value = int(word)
                     log_info = log_info_map.get(address)
                     if log_info:
-                        print("%.3f %-20s %2s %s 0x%X %d" % (time_delta, log_info.component, log_info.level, log_info.text, int_value, int_value))
+                        print("%.3f %s %s %s 0x%X %d" % (time_delta, log_info.component, log_info.level, log_info.text, int_value, int_value))
             else:
                 log_info = log_info_map.get(address)
                 if log_info:
-                    print("%.3f %-20s %2s %s" % (time_delta, log_info.component, log_info.level, log_info.text))
+                    print("%.3f %s %s %s" % (time_delta, log_info.component, log_info.level, log_info.text))
         # Sync.
         else:
             # Send every line to stdout immediately (no buffering).

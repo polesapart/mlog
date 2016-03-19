@@ -20,7 +20,16 @@ Whenever execution reaches the `MLOG_INFO` macro, the address of this symbol is 
 
 The benefit of the micro logging approach is clear: with traditional logging, 20 bytes would have to be stored and 20 bytes would have to be transmitted; with micro logging, only 1 byte needs to be stored and only 4 bytes need to be transmitted.
 
+## Dependencies
+
+For running the provided example: `g++` and `python3`
+
+If you want to extending/unit test MLOG itself, that is, if you want to run `make` in the top-level directory, you need [Google Test/Google Mock](https://github.com/google/googletest). Please adapt paths in Makefile accordingly.
+
+## Portability
+
+The code for MLOG is highly portable and should compile with any contemporary C/C++ toolchain. `generate_mlogmap.sh` currently supports extraction of MLOG log symbols from `gcc\g++` map files only.
+
 ## Usage
 Have a look at the README.md file in `example/`. 
-
 
