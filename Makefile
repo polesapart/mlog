@@ -4,7 +4,7 @@
 
 TARGET = test_mlog
 
-GMOCK_PATH = #### ~/gmock
+GMOCK_PATH = ~/gmock
 GTEST_PATH = $(GMOCK_PATH)/gtest
 
 CPPFLAGS += -DMLOG_TRANSMIT_DUMMY -DMLOG_DEBUG_OUTPUT

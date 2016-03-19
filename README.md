@@ -16,8 +16,18 @@ The `MLOG_INFO` macro once statically allocates a one-byte symbol that looks mor
 ```
 static const uint8_t MLOG_Comp_II_Inside_function_foo___;
 ```
-Whenever execution reaches the `MLOG_INFO` macro, the address of this symbol is transferred to the log buffer. Later, on the receiving side, the original log string can be reconstructed with the help of the map file.
-
+Whenever execution reaches the `MLOG_INFO` macro, the address of the symbol is transferred to the log buffer. Later, on the receiving side, the original log string can be reconstructed with the help of the map file, where all MLOG symbols and their corresponding addresses can be found:
+```
+Address: Symbol:
+------------------------------------------------------------
+00656618 MLOG_MlogTest_II_Hello_there___
+00656619 MLOG_MlogTest_II_Enter_AdvancedCharSearch___
+0065661a MLOG_MlogTest_EE_ENSURE_text_must_not_be_null___
+0065661b MLOG_MlogTest_WW_search_char_should_not_be_null___
+0065661c MLOG_MlogTest_EE_invalid_search_mode___
+0065661d MLOG_MlogTest_II_Exit_AdvancedCharSearch___
+:
+```
 The benefit of the micro logging approach is clear: with traditional logging, 20 bytes would have to be stored and 20 bytes would have to be transmitted; with micro logging, only 1 byte needs to be stored and only 4 bytes need to be transmitted.
 
 ## Dependencies
