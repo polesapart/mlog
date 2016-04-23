@@ -30,6 +30,31 @@ Address: Symbol:
 ```
 The benefit of the micro logging approach is clear: with traditional logging, 20 bytes would have to be stored and 20 bytes would have to be transmitted; with micro logging, only 1 byte needs to be stored and only 4 bytes need to be transmitted.
 
+## MLOG API
+
+Currently, the following MLOG macros are implemented (refer to [`mlog_base.h`](include/mlog_base.h)):
+
+`MLOG_INFO(m)`
+: Output text 'm' at log-level INFO.
+
+`MLOG_WARN(m)`
+: Output text 'm' at log-level WARNING.
+
+`MLOG_ERROR(m)`
+: Output text 'm' at log-level ERROR.
+
+`MLOG_INFO_VALUE(m, v)`
+: Output text 'm' and an unsigned value 'v' at log-level INFO.
+
+`MLOG_WARN_VALUE(m, v)`
+: Output text 'm' and an unsigned value 'v' at log-level WARNING.
+
+`MLOG_ERROR_VALUE(m, v)`
+: Output text 'm' and an unsigned value 'v' at log-level ERROR.
+
+`MLOG_ENSURE(e, m)`
+: If expresson 'e' is false, output text 'm'.
+
 ## Dependencies
 
 For running the provided example: just `g++` and `python3`
@@ -38,8 +63,8 @@ If you want to extend/unit test MLOG itself, that is, if you want to run `make` 
 
 ## Portability
 
-The code for MLOG is highly portable and should compile with any contemporary C/C++ toolchain. `generate_mlogmap.sh` currently supports extraction of MLOG log symbols from `gcc\g++` map files only.
+The code for MLOG is highly portable and should compile with any contemporary C/C++ toolchain. `generate_mlogmap.sh` currently supports extraction of MLOG log symbols from `gcc/g++` map files only.
 
 ## Usage
-Have a look at the README.md file in `example/`. 
+Have a look at the [README.md](example/README.md) file in the `example/` folder.
 
