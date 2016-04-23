@@ -35,25 +35,25 @@ The benefit of the micro logging approach is clear: with traditional logging, 20
 Currently, the following MLOG macros are implemented (refer to [`mlog_base.h`](include/mlog_base.h)):
 
 `MLOG_INFO(m)`
-: Output text 'm' at log-level INFO.
+:   Output text 'm' at log-level INFO.
 
 `MLOG_WARN(m)`
-: Output text 'm' at log-level WARNING.
+:   Output text 'm' at log-level WARNING.
 
 `MLOG_ERROR(m)`
-: Output text 'm' at log-level ERROR.
+:   Output text 'm' at log-level ERROR.
 
 `MLOG_INFO_VALUE(m, v)`
-: Output text 'm' and an unsigned value 'v' at log-level INFO.
+:   Output text 'm' and an unsigned value 'v' at log-level INFO.
 
 `MLOG_WARN_VALUE(m, v)`
-: Output text 'm' and an unsigned value 'v' at log-level WARNING.
+:   Output text 'm' and an unsigned value 'v' at log-level WARNING.
 
 `MLOG_ERROR_VALUE(m, v)`
-: Output text 'm' and an unsigned value 'v' at log-level ERROR.
+:   Output text 'm' and an unsigned value 'v' at log-level ERROR.
 
 `MLOG_ENSURE(e, m)`
-: If expresson 'e' is false, output text 'm'.
+:   If expresson 'e' is false, output text 'm'.
 
 ## Dependencies
 
