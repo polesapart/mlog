@@ -96,6 +96,42 @@ TEST(MLogTest, SuccessiveTextsAndValues) {
     EXPECT_EQ(987654321, val);
 } 
 
+TEST(MLogTest, ValuesOtherThanUnit32) {
+    mlog_init();
+
+    // 1. No value passed at al.
+    MLOG_INFO(without_value);
+    // 2. Pass an int.
+    MLOG_INFO_VALUE(with_value, 1234);
+    // 3. Pass an enum.
+    enum colors_e { red = 42, green = 43, blue = 44 };
+    colors_e current_color = green;
+    MLOG_INFO_VALUE(Current_color, current_color);
+    // 4. Pass double.
+    MLOG_INFO_VALUE(pi, 3.1415);
+
+    mlog_uint32_t adr;
+    mlog_value_t val;
+    bool hasVal;
+    bool success;
+
+    // 1.
+    success = getNextLogEntry(true, &adr, &hasVal, &val);
+    EXPECT_FALSE(hasVal);
+    // 2.
+    success = getNextLogEntry(false, &adr, &hasVal, &val);
+    EXPECT_TRUE(hasVal);
+    EXPECT_EQ(1234, val);
+    // 3.
+    success = getNextLogEntry(false, &adr, &hasVal, &val);
+    EXPECT_TRUE(hasVal);
+    EXPECT_EQ(43, val);
+    // 4.
+    success = getNextLogEntry(false, &adr, &hasVal, &val);
+    EXPECT_TRUE(hasVal);
+    EXPECT_EQ(3, val);
+}
+
 TEST(MLogTest, AdvancedCharSearch) {
     EXPECT_TRUE(advancedCharSearch("Foobar", 'o', SEARCH_MODE_FORWARD));
 }
