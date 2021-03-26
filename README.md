@@ -59,7 +59,7 @@ If expresson 'e' is false, output text 'm'.
 
 For running the provided example: just `g++` and `python3`
 
-If you want to extend/unit test MLOG itself, that is, if you want to run `make` in the top-level directory, you need [Google Test/Google Mock](https://github.com/google/googletest). Please adapt paths in Makefile accordingly.
+If you want to extend/unit test MLOG itself, that is, if you want to run `make` in the top-level directory, you need [Google Test/Google Mock](https://github.com/google/googletest). Please adapt paths in the Makefile accordingly.
 
 ## Portability
 

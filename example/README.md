@@ -4,13 +4,13 @@ In a terminal do this:
 cd <mlog-dir>/example
 make
 ```
-After running `make` you should have an executable called `example` and an mlogmap file called `example.nmaplog` in the `example` directory.
+After running `make` you should have an executable called `example` and an mlogmap file called `example.mlogmap` in the `example` directory.
 
 ## Starting the logger
 Start another terminal:
 ```
 cd <mlog-dir>/example/mlog_logger
-./mlog_logger.py ../example.nmaplog
+./mlog_logger.py ../example.mlogmap
 ```
 
 ## Running the example
